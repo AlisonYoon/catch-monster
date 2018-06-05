@@ -20,30 +20,33 @@ const monster = {
     y: 200
 };
 
-bgImage.onload = () => {
-    bgImage.width = canvas.width;
-    bgImage.height = canvas.height;
-    context.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height);
-};
+// bgImage.onload = () => {
+//     bgImage.width = canvas.width;
+//     bgImage.height = canvas.height;
+//     context.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height);
+// };
 bgImage.src = "./background.png";
 
-playerImage.onload = () => {
-    context.drawImage(playerImage, player.x, player.y, 100, 100);
-};
+// playerImage.onload = () => {
+//     context.drawImage(playerImage, player.x, player.y, 100, 100);
+// };
 playerImage.src = "./player.gif";
 
-monsterImage.onload = () => {
-    context.drawImage(monsterImage, monster.x, monster.y, 110, 110);
-};
+// monsterImage.onload = () => {
+//     context.drawImage(monsterImage, monster.x, monster.y, 110, 110);
+// };
 monsterImage.src = "./monster.gif";
 
 const render = () => {
+    bgImage.width = canvas.width;
+    bgImage.height = canvas.height;
+    context.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height);
     context.font= "18px Helvetica";
     context.textAlign = "left";
     context.textBaseline = "top";
-    context.drawImage(monsterImage, 0, 0);
-    context.drawImage(monsterImage, monster.x, monster.y, 80, 80); 
-    context.fillText(`Mons`);
+    context.drawImage(playerImage, player.x, player.y, 100, 100);
+    context.drawImage(monsterImage, monster.x, monster.y, 110, 110);
+    context.fillText(`Mons`, 50, 50);
 };
 
 const reset = () => {
@@ -107,8 +110,9 @@ setInterval(() => {
     ++tiem;
 }, 1000);
 
-window.addEventListener("load", eventWindowLodaded, false);
+
 const eventWindowLodaded = () => {
     canvasApp();
     main();
 }
+//window.addEventListener("load", eventWindowLodaded, false);
