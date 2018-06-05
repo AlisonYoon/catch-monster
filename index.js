@@ -16,8 +16,8 @@ const player = {
     speed: 15
 };
 const monster = {
-    x: 100,
-    y: 100
+    x: 200,
+    y: 200
 };
 
 bgImage.onload = () => {
@@ -28,18 +28,20 @@ bgImage.onload = () => {
 bgImage.src = "./background.png";
 
 playerImage.onload = () => {
-    context.drawImage(playerImage, player.x, player.y, 80, 80);
+    context.drawImage(playerImage, player.x, player.y, 100, 100);
 };
 playerImage.src = "./player.gif";
 
-monsterImage.onload() = () => {
-    context.drawImage(monsterImage, monster.x, monster.y, 150, 150);
+monsterImage.onload = () => {
+    context.drawImage(monsterImage, monster.x, monster.y, 110, 110);
 };
 monsterImage.src = "./monster.gif";
 
 // const render = () => {
-//     context.drawImage(bgImage, 0, 0);
-//     context.drawImage(playerImage, player.x, player.y, 80, 80);
-// }
+//     context.drawImage(monsterImage, 0, 0);
+//     context.drawImage(monsterImage, monster.x, monster.y, 80, 80); 
+// };
+// render();
+
 
 
