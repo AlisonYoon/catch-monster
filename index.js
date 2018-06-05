@@ -1,10 +1,18 @@
 const canvas = document.createElement("canvas"),
-    context = canvas.getContext("2d");
+    context = canvas.getContext("2d"),
+    audio = document.createElement("audio");
 
 document.body.appendChild(canvas);
+document.body.appendChild(audio);
+
+audio.src = "https://freesound.org/data/previews/39/39459_382028-lq.mp3";
+audio.volume = 0.1;
 
 canvas.height= 600;
 canvas.width= 600;
+
+let monsterCounter = 0;
+let time = 0;
 
 const bgImage = new Image(),
     playerImage = new Image(),
@@ -42,11 +50,13 @@ const render = () => {
     bgImage.height = canvas.height;
     context.drawImage(bgImage, 0, 0, bgImage.width, bgImage.height);
     context.font= "18px Helvetica";
+    context.fillStyle = "#fff";
     context.textAlign = "left";
     context.textBaseline = "top";
     context.drawImage(playerImage, player.x, player.y, 100, 100);
     context.drawImage(monsterImage, monster.x, monster.y, 110, 110);
-    context.fillText(`Mons`, 50, 50);
+    context.fillText(`Monsters caught : ${monsterCounter}`, 50, 50);
+    context.fillText(`Time: ${time}`, 50, 70);
 };
 
 const reset = () => {
@@ -93,6 +103,7 @@ const caculateTouch = () => {
     ) {
         reset();
         ++monsterCounter;
+        audio.play();
     }
 };
 
@@ -107,12 +118,12 @@ reset();
 main();
 
 setInterval(() => {
-    ++tiem;
+    ++time;
 }, 1000);
 
 
-const eventWindowLodaded = () => {
-    canvasApp();
-    main();
-}
+// const eventWindowLodaded = () => {
+//     canvasApp();
+//     main();
+// }
 //window.addEventListener("load", eventWindowLodaded, false);
